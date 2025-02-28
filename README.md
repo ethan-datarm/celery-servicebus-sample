@@ -21,9 +21,30 @@ This application provides a REST API for enqueueing data processing tasks and ch
 pip install -r requirements.txt
 ```
 
-## Configuration
+## Azure Prerequisites
 
-Make sure you have a message broker (Redis or RabbitMQ) installed and configured for Celery.
+### Service Bus
+
+- Create a Service Bus Instance (aka namespace)
+- Create a queue within it
+- Generate a connection string for the Service Bus - this will have a key name and key value, you'll need both
+
+### Storage
+
+- Create a Storage Account
+- Create a Storage Container (default name is "celery")
+- Generate a connection string for the Storage Account - either Admin Connection String or SAS for Blob Storage
+
+## Environment Variables
+
+Set Environment Variables for the Service Bus and Storage connection strings
+- `SERVICE_BUS_KEY_NAME` - the key name from the Service Bus connection string (e.g. "RootManageSharedAccessKey")
+- `SERVICE_BUS_KEY` - the key value from the Service Bus connection string (e.g. "xxx=")
+- `AZURE_BLOB_CONNECTION_STRING` - the connection string for the Storage Account (e.g. "DefaultEndpointsProtocol=https;AccountName=my_storage_account;AccountKey=xxx;EndpointSuffix=core.windows.net")
+- `SERVICE_BUS_NAMESPACE` - the namespace of the Service Bus (e.g. "my_servicebus_name")
+- `SERVICE_BUS_QUEUE_NAME` - the name of the queue in the Service Bus (e.g. "my_queue_name")
+
+A .env file is included in the repo for convenience, but other methods of setting environment variables are supported. Rename the .env.example file to .env and set the variables.
 
 ## Running the Application
 

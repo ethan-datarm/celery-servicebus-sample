@@ -5,3 +5,4 @@ azure-servicebus
 azure-identity
 azure-core
 azure-storage-blob
+python-dotenv
