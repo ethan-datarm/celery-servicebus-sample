@@ -1,0 +1,7 @@
+fastapi
+uvicorn 
+celery
+azure-servicebus
+azure-identity
+azure-core
+azure-storage-blob
